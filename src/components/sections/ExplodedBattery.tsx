@@ -9,7 +9,7 @@ const layers = [
     id: 1,
     name: "TOP INSULATION PLATE",
     desc: "Heat & shock resistant",
-    src: "/layer-1-top-plate.png?v=2",
+    src: "/layer-1-top-plate.png?v=3",
     labelTop: "7.6%", 
     startOpen: 0.1,
     endOpen: 0.15,
@@ -18,7 +18,7 @@ const layers = [
     id: 2,
     name: "COPPER BUSBARS",
     desc: "High conductivity current distribution",
-    src: "/layer-2-busbars.png?v=2",
+    src: "/layer-2-busbars.png?v=3",
     labelTop: "18.7%", 
     startOpen: 0.2,
     endOpen: 0.25,
@@ -27,7 +27,7 @@ const layers = [
     id: 3,
     name: "CELL HOLDER",
     desc: "Securely holds cells in place",
-    src: "/layer-3-cell-holder.png?v=2",
+    src: "/layer-3-cell-holder.png?v=3",
     labelTop: "32.9%", 
     startOpen: 0.3,
     endOpen: 0.35,
@@ -36,7 +36,7 @@ const layers = [
     id: 4,
     name: <>LiFePO<sub>4</sub> CELLS</>,
     desc: "High performance 32700 cells",
-    src: "/layer-4-cells.png?v=2",
+    src: "/layer-4-cells.png?v=3",
     labelTop: "52.5%", 
     startOpen: 0.4,
     endOpen: 0.45,
@@ -45,7 +45,7 @@ const layers = [
     id: 5,
     name: "BMS & CONTROL BOARD",
     desc: "Monitoring, balancing & protection",
-    src: "/layer-5-bms.png?v=2",
+    src: "/layer-5-bms.png?v=3",
     labelTop: "72.1%", 
     startOpen: 0.5,
     endOpen: 0.55,
@@ -54,7 +54,7 @@ const layers = [
     id: 6,
     name: "BOTTOM PLATE",
     desc: "Impact resistant base structure",
-    src: "/layer-6-bottom-plate.png?v=2",
+    src: "/layer-6-bottom-plate.png?v=3",
     labelTop: "90.3%", 
     startOpen: 0.6,
     endOpen: 0.65,
@@ -138,7 +138,7 @@ export function ExplodedBattery() {
                 >
                   <img 
                     src={layer.src} 
-                    alt={layer.name}
+                    alt={typeof layer.name === 'string' ? layer.name : "LiFePO4 CELLS"}
                     className="w-full h-full object-contain"
                   />
                 </motion.div>
