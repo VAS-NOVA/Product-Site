@@ -70,8 +70,8 @@ export function ExplodedBattery() {
     offset: ["start start", "end end"]
   });
 
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1], { clamp: true });
-  const titleY = useTransform(scrollYProgress, [0, 0.05], [20, 0], { clamp: true });
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.05, 1], [0, 1, 1]);
+  const titleY = useTransform(scrollYProgress, [0, 0.05, 1], [20, 0, 0]);
   
   return (
     <section ref={containerRef} className="relative h-[400vh] bg-[#f8f5f0]">
@@ -106,23 +106,20 @@ export function ExplodedBattery() {
             
             const opacity = useTransform(
               scrollYProgress,
-              [layer.startOpen, layer.endOpen],
-              [0, 1],
-              { clamp: true }
+              [0, layer.startOpen, layer.endOpen, 1],
+              [0, 0, 1, 1]
             );
 
             const yOffset = useTransform(
               scrollYProgress,
-              [layer.startOpen, layer.endOpen],
-              [40, 0],
-              { clamp: true }
+              [0, layer.startOpen, layer.endOpen, 1],
+              [40, 40, 0, 0]
             );
 
             const lineWidth = useTransform(
               scrollYProgress,
-              [layer.startOpen, layer.endOpen],
-              ["0%", "100%"],
-              { clamp: true }
+              [0, layer.startOpen, layer.endOpen, 1],
+              ["0%", "0%", "100%", "100%"]
             );
 
             return (
