@@ -43,24 +43,58 @@ export const About = () => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-24">
+        <div className="max-w-4xl mb-24 relative">
+          
+          {/* Subtle background decoration */}
+          <div className="absolute -top-12 -left-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-extrabold tracking-tight text-balance mb-8 leading-[1.1] text-slate-900"
-          >
-            We pair <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-cyan-500">renewable solar</span> with intelligent battery systems.
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl"
+            className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-balance mb-8 leading-[1.05] text-slate-900 relative z-10"
           >
-            VAS is engineered for the exact moment an EV runs out of charge far from the nearest station. A single, deployable unit that bridges the gap between stranded and moving.
-          </motion.p>
+            We pair <span className="relative inline-block whitespace-nowrap">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-emerald-400 to-cyan-500 px-2">renewable solar</span>
+              
+              {/* Realistic rough brush stroke (Black, sits behind text, strictly bounded, tilted) */}
+              <svg 
+                className="absolute top-1/2 left-[5%] -translate-y-1/2 w-[90%] h-[130%] text-slate-900 z-0 pointer-events-none drop-shadow-sm -rotate-3" 
+                viewBox="0 0 200 60" 
+                preserveAspectRatio="none" 
+                fill="currentColor"
+              >
+                <defs>
+                  <filter id="rough-brush" x="-10%" y="-10%" width="120%" height="120%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.1 0.4" numOctaves="3" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                </defs>
+                <motion.path 
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                  style={{ transformOrigin: "left" }}
+                  filter="url(#rough-brush)"
+                  d="M 5 18 C 15 15, 40 18, 80 16 C 120 14, 160 18, 185 15 C 190 14, 195 20, 192 28 C 195 32, 190 38, 185 40 C 150 45, 110 42, 70 45 C 30 48, 15 42, 5 38 C 2 35, 2 25, 5 18 Z"
+                />
+              </svg>
+            </span> with intelligent battery systems.
+          </motion.h2>
+          
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="relative pl-6 md:pl-8 border-l-4 border-emerald-500 max-w-2xl z-10"
+          >
+            <p className="text-lg md:text-xl text-slate-600 font-medium leading-relaxed">
+              VAS is engineered for the exact moment an EV runs out of charge far from the nearest station. A single, deployable unit that bridges the gap between stranded and moving.
+            </p>
+          </motion.div>
         </div>
 
         {/* Bento Grid */}
