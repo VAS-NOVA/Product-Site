@@ -158,9 +158,9 @@ export const FeaturesGrid = () => {
     <section ref={containerRef} id="features" className="relative bg-[#f8f5f0] h-[600vh]">
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
         
-        <div className="absolute top-8 md:top-16 z-[100] pointer-events-none">
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1] text-center shadow-sm bg-white/70 backdrop-blur-xl px-8 py-4 rounded-full border border-white">
-            Engineered for the <span className="text-emerald-500">future.</span>
+        <div className="absolute top-8 md:top-16 z-[100] pointer-events-none w-full px-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1] text-center">
+            Engineered for <span className="text-emerald-500">tomorrow.</span>
           </h2>
         </div>
 
