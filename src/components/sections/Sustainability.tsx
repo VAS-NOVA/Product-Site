@@ -1,96 +1,140 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+
+const points = [
+  {
+    id: "01",
+    title: "Renewable energy",
+    description: "Every charge is sourced from the sun, not fossil fuels or grid peaker plants.",
+    img: "/images/bg_renewable.png",
+    overlay: "bg-emerald-950/80 group-hover:bg-emerald-900/60",
+    text: "text-white",
+    descText: "text-emerald-50",
+    badge: "bg-emerald-900/80 text-emerald-400 border-emerald-500/50",
+    border: "border-emerald-900"
+  },
+  {
+    id: "02",
+    title: "Cleaner mobility",
+    description: "Supports a transportation network built around renewable, distributed power.",
+    img: "/images/bg_clean.png",
+    overlay: "bg-white/90 group-hover:bg-white/70",
+    text: "text-slate-900",
+    descText: "text-slate-600",
+    badge: "bg-white text-emerald-500 border-slate-200 shadow-sm",
+    border: "border-slate-200/80"
+  },
+  {
+    id: "03",
+    title: "Future-ready tech",
+    description: "Modular battery and solar architecture designed to evolve with EV standards.",
+    img: "/images/bg_future.png",
+    overlay: "bg-slate-950/85 group-hover:bg-slate-900/70",
+    text: "text-white",
+    descText: "text-slate-300",
+    badge: "bg-slate-800/90 text-white border-slate-700",
+    border: "border-slate-800"
+  }
+];
 
 export const Sustainability = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number>(0);
+
   return (
     <section id="sustainability" className="py-24 md:py-32 bg-[#f8f5f0] relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         
-        {/* Bento Box Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 max-w-7xl mx-auto">
-          
-          {/* Main Hero Block (Spans 5 columns) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="lg:col-span-5 flex flex-col justify-between p-8 md:p-12 lg:p-14 rounded-[2rem] md:rounded-[2.5rem] bg-emerald-500 text-white relative overflow-hidden shadow-xl transform-gpu transition-transform hover:scale-[1.01] duration-500 min-h-[400px] lg:min-h-[500px]"
-          >
-             {/* Decorative Background Glows */}
-             <div className="absolute -top-32 -right-32 w-80 h-80 bg-emerald-400 blur-[80px] rounded-full pointer-events-none" />
-             <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-emerald-600 blur-[80px] rounded-full pointer-events-none" />
-             
-             <div className="relative z-10">
-               <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight mb-8 leading-[1.05]">
-                 Cleaner mobility, <br />
-                 <span className="text-emerald-100">by design.</span>
-               </h2>
-             </div>
-             
-             <div className="relative z-10 mt-8">
-               <p className="text-lg md:text-xl text-emerald-50 font-medium opacity-95 leading-relaxed">
-                 Every VAS unit is built to reduce dependency on fossil-fuel backup power, and to push the transportation ecosystem toward renewable-first infrastructure.
-               </p>
-             </div>
-          </motion.div>
+        {/* Header */}
+        <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-[4rem] font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.05]">
+            Cleaner mobility, <br className="hidden md:block" />
+            <span className="text-emerald-500">by design.</span>
+          </h2>
+          <p className="text-lg md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
+            Every VAS unit is built to reduce dependency on fossil-fuel backup power and push toward renewable-first infrastructure.
+          </p>
+        </div>
 
-          {/* Points Blocks (Spans 7 columns) */}
-          <div className="lg:col-span-7 flex flex-col gap-4 md:gap-6">
+        {/* Interactive Expansion Accordion */}
+        <div className="flex flex-col lg:flex-row h-[900px] lg:h-[600px] gap-4 w-full max-w-7xl mx-auto">
+          {points.map((point, i) => {
+            const isHovered = hoveredIndex === i;
             
-            {/* Top Row: 2 Columns */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 h-full">
-               
-               {/* 01 Renewable Energy */}
-               <motion.div 
-                 initial={{ opacity: 0, y: 20 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-                 className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col transform-gpu hover:-translate-y-1"
-               >
-                  <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center font-bold mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-500 shadow-sm shrink-0">01</div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Renewable energy</h3>
-                  <p className="text-slate-500 leading-relaxed font-medium">Every charge is sourced from the sun, not fossil fuels or grid peaker plants.</p>
-               </motion.div>
-               
-               {/* 02 Cleaner Mobility */}
-               <motion.div 
-                 initial={{ opacity: 0, y: 20 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                 className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col transform-gpu hover:-translate-y-1"
-               >
-                  <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center font-bold mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-500 shadow-sm shrink-0">02</div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Cleaner mobility</h3>
-                  <p className="text-slate-500 leading-relaxed font-medium">Supports a transportation network built around renewable, distributed power.</p>
-               </motion.div>
+            return (
+              <motion.div
+                key={point.id}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onFocus={() => setHoveredIndex(i)}
+                tabIndex={0}
+                layout
+                initial={false}
+                animate={{
+                  flex: isHovered ? 3.5 : 1,
+                }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                className={`relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden cursor-pointer border shadow-sm hover:shadow-2xl transition-shadow ${point.border} group`}
+              >
+                 {/* The Background Image */}
+                 <div 
+                   className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 ease-out group-hover:scale-110`}
+                   style={{ backgroundImage: `url(${point.img})` }} 
+                 />
+                 
+                 {/* The Color Overlay (Darkens/Lightens the image for readability) */}
+                 <div className={`absolute inset-0 transition-colors duration-500 ${point.overlay}`} />
 
-            </div>
+                 {/* Content Wrapper */}
+                 <div className="absolute inset-0 p-6 md:p-8 lg:p-12 flex flex-col justify-end pointer-events-none z-10">
+                    
+                    <div className="flex flex-col w-full h-full justify-end">
+                       
+                       {/* Number Badge */}
+                       <motion.div 
+                         layout="position"
+                         className={`w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center shrink-0 text-lg md:text-2xl font-bold border shadow-sm mb-6 ${point.badge}`}
+                       >
+                         {point.id}
+                       </motion.div>
+                       
+                       {/* Title Row (whitespace-normal allows wrapping, min-h prevents layout jumping) */}
+                       <div className="min-h-[70px] md:min-h-[100px] flex items-start w-full">
+                         <motion.h3 
+                           layout="position" 
+                           className={`text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight whitespace-normal leading-[1.1] ${point.text}`}
+                         >
+                           {point.title}
+                         </motion.h3>
+                       </div>
 
-            {/* Bottom Row: Full Width Dark Tech Block */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-              className="bg-slate-950 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.2)] group overflow-hidden relative transform-gpu transition-all duration-500 hover:scale-[1.01]"
-            >
-               {/* Hover flare effect */}
-               <div className="absolute -right-24 -bottom-24 w-64 h-64 bg-emerald-500/20 blur-[60px] rounded-full pointer-events-none transition-transform group-hover:scale-150 duration-700" />
-               
-               <div className="w-14 h-14 rounded-full bg-slate-900 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold shrink-0 z-10 shadow-[0_0_20px_rgba(16,185,129,0.2)]">03</div>
-               <div className="z-10 relative">
-                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">Future-ready tech</h3>
-                 <p className="text-slate-400 text-lg leading-relaxed font-medium max-w-2xl">Modular battery and solar architecture designed to evolve directly with future EV charging standards.</p>
-               </div>
-            </motion.div>
+                       {/* Description collapses and expands seamlessly */}
+                       <div className="overflow-hidden">
+                         <AnimatePresence mode="wait">
+                           {isHovered && (
+                             <motion.div
+                               initial={{ opacity: 0, height: 0 }}
+                               animate={{ opacity: 1, height: 'auto' }}
+                               exit={{ opacity: 0, height: 0 }}
+                               transition={{ duration: 0.3, ease: "easeOut" }}
+                             >
+                               <p className={`text-lg md:text-xl font-medium leading-relaxed max-w-sm mt-4 whitespace-normal ${point.descText}`}>
+                                 {point.description}
+                               </p>
+                             </motion.div>
+                           )}
+                         </AnimatePresence>
+                       </div>
 
-          </div>
-
+                    </div>
+                 </div>
+                 
+                 {/* Subtle Inner Gradient for premium depth */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-50 mix-blend-overlay" />
+              </motion.div>
+            )
+          })}
         </div>
 
       </div>
