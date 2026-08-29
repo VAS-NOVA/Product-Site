@@ -3,10 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const Footer = () => {
   return (
-    <footer className="bg-slate-50 pt-24 pb-8 relative overflow-hidden text-slate-900 border-t border-slate-200">
+    <footer className="bg-[#f8f5f0] pt-24 pb-8 relative overflow-hidden text-slate-900 border-t border-slate-200">
       
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-emerald-500/5 blur-[120px] pointer-events-none" />
@@ -19,7 +20,7 @@ export const Footer = () => {
             <Link href="/" className="text-4xl md:text-5xl font-black tracking-tighter text-slate-900 inline-block mb-6">
               VAS<span className="text-emerald-500">.</span>
             </Link>
-            <p className="text-slate-500 text-lg leading-relaxed mb-8 font-medium">
+            <p className="text-slate-700 text-lg leading-relaxed mb-8 font-medium">
               The missing layer of EV infrastructure. Portable, solar-powered, and always ready when you need it most.
             </p>
           </div>
@@ -45,37 +46,37 @@ export const Footer = () => {
           <div>
             <h4 className="font-bold text-slate-900 mb-6 tracking-wide text-sm uppercase">Product</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">VAS Unit V1</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Fleet Solutions</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Technical Specs</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">VAS Unit V1</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Fleet Solutions</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Technical Specs</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-slate-900 mb-6 tracking-wide text-sm uppercase">Company</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">About Us</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Sustainability</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Careers</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Contact</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">About Us</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Sustainability</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Careers</Link></li>
+              <li><Link href="mailto:vasnova3@gmail.com" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Contact</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-bold text-slate-900 mb-6 tracking-wide text-sm uppercase">Connect</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Twitter (X)</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">LinkedIn</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Instagram</Link></li>
+              <li><a href="https://x.com/vasnova_" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium block">Twitter (X)</a></li>
+              <li><a href="https://www.linkedin.com/company/vas-nova/" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium block">LinkedIn</a></li>
+              <li><a href="https://instagram.com/vasnova_" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium block">Instagram</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-slate-900 mb-6 tracking-wide text-sm uppercase">Legal</h4>
             <ul className="space-y-4">
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Privacy Policy</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Terms of Service</Link></li>
-              <li><Link href="#" className="text-slate-500 hover:text-emerald-600 transition-colors font-medium">Cookie Policy</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Privacy Policy</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Terms of Service</Link></li>
+              <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Cookie Policy</Link></li>
             </ul>
           </div>
 
@@ -85,25 +86,22 @@ export const Footer = () => {
 
       {/* Massive Background Watermark */}
       <div className="w-full flex justify-center items-center pointer-events-none select-none absolute bottom-12 left-0 right-0 overflow-hidden">
-        <h1 className="text-[20vw] font-black text-slate-900/[0.08] tracking-tighter leading-none whitespace-nowrap">
+        <motion.h1 
+          initial={{ y: '100%', opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[20vw] font-black text-slate-900/[0.08] tracking-tighter leading-none whitespace-nowrap"
+        >
           VAS NOVA
-        </h1>
+        </motion.h1>
       </div>
 
       {/* Bottom Copyright Bar */}
       <div className="container mx-auto px-6 relative z-10 border-t border-slate-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 mt-8">
-        <p className="text-slate-500 text-sm font-medium">
+        <p className="text-slate-700 text-sm font-medium">
           © {new Date().getFullYear()} Vision for Advanced Sustainability. All rights reserved.
         </p>
-        
-        {/* Status Indicator */}
-        <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-sm">
-          <div className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </div>
-          <span className="text-xs text-slate-500 font-bold tracking-wide uppercase">All systems operational</span>
-        </div>
       </div>
 
     </footer>

@@ -28,7 +28,7 @@ export const VisionQuote = () => {
             </p>
             
             <div>
-              <a href="mailto:hello@vas-energy.com" className="inline-block relative group">
+              <a href="mailto:vasnova3@gmail.com" className="inline-block relative group">
                 {/* Glowing drop shadow specifically matching the screenshot's button glow */}
                 <div className="absolute -inset-1 bg-emerald-500/80 rounded-full blur-md opacity-20 group-hover:opacity-40 transition duration-500" />
                 
