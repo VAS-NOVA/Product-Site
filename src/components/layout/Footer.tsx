@@ -58,7 +58,7 @@ export const Footer = () => {
               <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">About Us</Link></li>
               <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Sustainability</Link></li>
               <li><Link href="/coming-soon" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Careers</Link></li>
-              <li><Link href="mailto:vasnova3@gmail.com" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Contact</Link></li>
+              <li><Link href="/contact" className="text-slate-700 hover:text-emerald-600 transition-colors font-medium">Contact</Link></li>
             </ul>
           </div>
           
