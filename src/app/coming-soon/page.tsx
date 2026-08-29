@@ -59,10 +59,8 @@ export default function ComingSoon() {
             <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-[#947844] mb-6 drop-shadow-sm">
               Coming soon...
             </h1>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10 font-medium">
-              VAS Nova, the new standard for portable EV infrastructure is on its way. 
-              Because apparently, relying on public chargers that are broken 50% of the time isn't a viable strategy. 
-              We're still busy engineering the future, so drop your email below and we'll let you know when it's ready.
+            <p className="text-slate-600 text-lg leading-relaxed mb-10 font-medium max-w-lg">
+              Because relying on broken public chargers is literally not the vibe. We're building portable, off-grid power so you can stop having a meltdown every time your battery hits 10%. Drop your email below and we'll let you know when it drops.
             </p>
 
             {/* Email Form */}
@@ -111,10 +109,10 @@ export default function ComingSoon() {
             className="relative w-full h-[85%]"
           >
             <Image 
-              src="/images/coming_soon_transparent.png"
+              src="/images/coming_soon_final.png"
               alt="Coming Soon"
               fill
-              className="object-contain drop-shadow-2xl scale-110"
+              className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] scale-110"
             />
           </motion.div>
         </div>

@@ -12,11 +12,11 @@ except ImportError:
     from rembg import remove, new_session
     from PIL import Image
 
-# Use the exact absolute path of the very first generated image
-input_path = r"C:\Users\mrsub\.gemini\antigravity\brain\67ecbf31-66e6-485a-8c78-c91dda577c5b\coming_soon_image_1787982650059.png"
-output_path = 'public/images/coming_soon_final.png'
+# Use the EV CHARGE image from the previous session!
+input_path = 'public/images/cta_image.png'
+output_path = 'public/images/cta_image_transparent.png'
 
-print("Processing image with full u2net model on D: drive...")
+print("Processing EV CHARGE image...")
 session = new_session("u2net")
 with open(input_path, 'rb') as i:
     with open(output_path, 'wb') as o:
