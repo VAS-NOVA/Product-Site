@@ -32,7 +32,7 @@ export const Navbar = () => {
             </Link>
           </nav>
           <Link href="#contact">
-            <button className="bg-slate-900 text-white text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase px-6 py-3 rounded-full hover:bg-slate-800 transition-colors">
+            <button suppressHydrationWarning className="bg-slate-900 text-white text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase px-6 py-3 rounded-full hover:bg-slate-800 transition-colors">
               Contact Us
             </button>
           </Link>
