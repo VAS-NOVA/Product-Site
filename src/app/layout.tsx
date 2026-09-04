@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "VAS — Vision for Advanced Sustainability",
+  title: "VAS NOVA | Solar-Powered Emergency EV Charging",
   description: "VAS builds a portable, foldable, solar-assisted emergency charger for electric vehicles — reliable backup power when you need it most, drawn straight from the sun.",
 };
 
