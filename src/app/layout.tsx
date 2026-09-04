@@ -50,6 +50,9 @@ export const metadata: Metadata = {
     icon: '/vas-title-logo-square.png',
     apple: '/vas-title-logo-square.png',
   },
+  verification: {
+    google: '-VzGlzMTVJAAni15-86hLvnFrkpin78LPRdSuS25_qU',
+  },
 };
 
 export default function RootLayout({
