@@ -85,8 +85,8 @@ export const Footer = () => {
       </div>
 
       {/* Massive Background Watermark */}
-      <div className="w-full flex justify-center items-center pointer-events-none select-none absolute bottom-12 left-0 right-0 overflow-hidden">
-        <motion.h1 
+      <div className="w-full flex justify-center items-center pointer-events-none select-none absolute bottom-12 left-0 right-0 overflow-hidden" aria-hidden="true">
+        <motion.div 
           initial={{ y: '100%', opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -94,7 +94,7 @@ export const Footer = () => {
           className="text-[20vw] font-black text-slate-900/[0.08] tracking-tighter leading-none whitespace-nowrap"
         >
           VAS NOVA
-        </motion.h1>
+        </motion.div>
       </div>
 
       {/* Bottom Copyright Bar */}

@@ -55,6 +55,7 @@ export const About = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-balance mb-8 leading-[1.05] text-slate-900 relative z-10"
           >
+            <span className="block text-xl md:text-2xl text-emerald-600 font-bold tracking-widest uppercase mb-4">About VAS NOVA</span>
             We pair <span className="relative inline-block whitespace-nowrap">
               <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-emerald-400 to-cyan-500 px-2">renewable solar</span>
               

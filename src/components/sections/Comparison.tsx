@@ -15,7 +15,7 @@ const comparisons = [
   },
   {
     problem: 'Months to deploy new stations',
-    solution: 'Operational in less than 48 hours'
+    solution: 'Designed for deployment in under 48 hours'
   },
   {
     problem: '100% fossil-fuel grid reliance',

@@ -135,7 +135,7 @@ export function ExplodedBattery() {
                 >
                   <img 
                     src={layer.src} 
-                    alt={typeof layer.name === 'string' ? layer.name : "LiFePO4 CELLS"}
+                    alt={`VAS NOVA Battery Component: ${typeof layer.name === 'string' ? layer.name : "LiFePO4 CELLS"} - ${layer.desc}`}
                     className="w-full h-full object-contain"
                   />
                 </motion.div>

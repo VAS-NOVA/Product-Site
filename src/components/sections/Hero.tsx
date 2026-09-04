@@ -18,7 +18,7 @@ export const Hero = () => {
 
       {/* Top Left Zone: Logo */}
       <div className="absolute top-0 left-6 lg:left-8 xl:left-12 z-40">
-        <img src="/vas-logo-transparent.png" alt="VAS Logo" className="w-28 md:w-36 h-auto object-contain drop-shadow-sm" />
+        <img src="/vas-logo-transparent.png" alt="VAS NOVA Logo - Vision for Advanced Sustainability" className="w-28 md:w-36 h-auto object-contain drop-shadow-sm" />
       </div>
 
       {/* Top Left Zone: Headline */}
@@ -29,6 +29,7 @@ export const Hero = () => {
         className="relative lg:absolute lg:top-24 xl:top-32 lg:left-0 xl:left-4 max-w-sm z-30 px-6 lg:px-4 w-full lg:w-auto mb-12 lg:mb-0"
       >
         <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tight text-slate-900 leading-[1]">
+          <span className="sr-only">VAS NOVA — Solar-Powered Emergency EV Charging. </span>
           &ldquo;Forge <br/>
           <span className="relative inline-block mt-2">
             <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-accent via-cyan-400 to-accent-hover">
@@ -42,7 +43,7 @@ export const Hero = () => {
       <div className="relative lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-full lg:w-[60vw] lg:max-w-[900px] h-[400px] lg:h-[600px] pointer-events-none z-10 flex items-center justify-center my-4 lg:my-0 shrink-0">
         <img 
           src="/vas-nova-cutout.png"
-          alt="VAS Nova Black Solar Car Cover"
+          alt="VAS NOVA Solar-Powered Emergency EV Charger Prototype - Portable clean energy infrastructure"
           className="w-full h-full object-contain"
         />
       </div>
@@ -52,10 +53,13 @@ export const Hero = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-        className="relative lg:absolute lg:bottom-16 lg:right-6 xl:right-16 max-w-[320px] z-20 px-6 md:px-0 w-full lg:w-auto flex flex-col lg:items-end text-left lg:text-right mt-auto"
+        className="relative lg:absolute lg:bottom-12 lg:right-6 xl:right-16 max-w-[400px] z-20 px-6 md:px-0 w-full lg:w-auto flex flex-col lg:items-end text-left lg:text-right mt-auto"
       >
-        <p className="text-lg md:text-xl text-black mb-8 leading-relaxed text-balance font-bold">
+        <p className="text-lg md:text-xl text-black mb-4 leading-relaxed text-balance font-bold">
           Sever the cord. Our solar-integrated backup stations guarantee your EV is always charged, anywhere under the sun.
+        </p>
+        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
+          VAS NOVA (Vision for Advanced Sustainability) is a university-born technology startup developing portable, solar-powered emergency EV charging and clean-energy infrastructure.
         </p>
       </motion.div>
       

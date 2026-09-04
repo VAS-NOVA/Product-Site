@@ -18,7 +18,7 @@ const features = [
   {
     icon: <Zap className="w-10 h-10 md:w-12 md:h-12 text-emerald-500" />,
     title: 'Fast Charging',
-    description: 'Deliver up to 350kW DC fast charging capabilities for minimal wait times.',
+    description: 'Targeting up to 350kW DC fast charging capabilities for minimal wait times.',
   },
   {
     icon: <Cpu className="w-10 h-10 md:w-12 md:h-12 text-emerald-500" />,
