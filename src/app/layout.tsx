@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { Chatbot } from "@/components/ui/Chatbot";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -100,7 +100,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body suppressHydrationWarning className="min-h-full flex flex-col text-foreground bg-background">{children}</body>
+      <body suppressHydrationWarning className="min-h-full flex flex-col text-foreground bg-background">
+        {children}
+        <Chatbot />
+      </body>
     </html>
   );
 }

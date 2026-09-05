@@ -53,13 +53,13 @@ export const Hero = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-        className="relative lg:absolute lg:bottom-12 lg:right-6 xl:right-16 max-w-[400px] z-20 px-6 md:px-0 w-full lg:w-auto flex flex-col lg:items-end text-left lg:text-right mt-auto"
+        className="relative lg:absolute lg:bottom-24 lg:right-6 xl:right-16 max-w-[280px] z-20 px-6 md:px-0 w-full lg:w-auto flex flex-col lg:items-end text-left lg:text-right mt-auto pb-24 lg:pb-0"
       >
-        <p className="text-lg md:text-xl text-black mb-4 leading-relaxed text-balance font-bold">
-          Sever the cord. Our solar-integrated backup stations guarantee your EV is always charged, anywhere under the sun.
+        <p className="text-base md:text-lg text-black mb-2 leading-tight text-balance font-bold">
+          Sever the cord. Portable solar backup for your EV.
         </p>
-        <p className="text-sm md:text-base text-slate-700 leading-relaxed font-medium">
-          VAS NOVA (Vision for Advanced Sustainability) is a university-born technology startup developing portable, solar-powered emergency EV charging and clean-energy infrastructure.
+        <p className="text-xs md:text-sm text-slate-700 leading-snug font-medium">
+          VAS NOVA develops emergency clean-energy infrastructure.
         </p>
       </motion.div>
       
