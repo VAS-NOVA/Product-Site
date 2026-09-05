@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     apple: '/vas-title-logo-square.png',
   },
   verification: {
-    google: '-VzGlzMTVJAAni15-86hLvnFrkpin78LPRdSuS25_qU',
+    google: 'DWCBBbprtzlZc0JnQBB6N3464XCC-SPzbUpCdnSLRK8',
   },
 };
 
