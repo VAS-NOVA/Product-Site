@@ -168,14 +168,14 @@ export const Chatbot = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-black/80 backdrop-blur-xl text-white shadow-2xl shadow-orange-500/20 border border-white/10 flex items-center justify-center overflow-hidden group"
+            className="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-[#18181b] backdrop-blur-xl text-white shadow-2xl shadow-emerald-500/10 border border-white/10 flex items-center justify-center overflow-hidden group hover:border-emerald-500/50 transition-colors"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-amber-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <MessageSquare className="w-6 h-6 relative z-10 text-orange-400 group-hover:text-orange-300 transition-colors" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-emerald-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <MessageSquare className="w-6 h-6 relative z-10 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
             
             {/* Ping animation */}
             <span className="absolute flex h-full w-full inset-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-20"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-20"></span>
             </span>
           </motion.button>
         )}
@@ -189,36 +189,44 @@ export const Chatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] h-[600px] max-h-[80vh] max-w-[calc(100vw-3rem)] rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 bg-black/40 backdrop-blur-3xl flex flex-col"
+            className="fixed bottom-6 right-6 z-50 w-[380px] h-[600px] max-h-[80vh] max-w-[calc(100vw-3rem)] rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 bg-[#09090b] flex flex-col"
           >
-            {/* Animated Energy Background Orbs */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-              <div className="absolute -top-20 -left-20 w-72 h-72 bg-orange-500/20 rounded-full blur-[64px] animate-pulse" style={{ animationDuration: '4s' }} />
-              <div className="absolute top-1/3 -right-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-[64px] animate-pulse" style={{ animationDuration: '6s' }} />
-              <div className="absolute -bottom-20 left-10 w-72 h-72 bg-amber-500/20 rounded-full blur-[64px] animate-pulse" style={{ animationDuration: '5s' }} />
+            {/* Engineering Grid Background */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+            
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08),transparent_70%)] pointer-events-none z-0" />
+
+            {/* Background Watermark Logo */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+              <img 
+                src="/vas-logo-transparent.png" 
+                alt="" 
+                className="w-64 h-auto opacity-[0.04] mix-blend-plus-lighter"
+              />
             </div>
 
             {/* Floating Island Header */}
-            <div className="absolute top-4 left-4 right-4 z-20 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 flex items-center justify-between shadow-lg">
+            <div className="absolute top-4 left-4 right-4 z-20 bg-[#18181b]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-3 flex items-center justify-between shadow-lg">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-black/40 border border-white/10 flex items-center justify-center shadow-inner">
-                  <Zap className="w-5 h-5 text-orange-400" />
+                <div className="w-10 h-10 rounded-full bg-[#09090b] border border-white/5 flex items-center justify-center shadow-inner">
+                  <Zap className="w-5 h-5 text-emerald-400" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white tracking-wide text-sm flex items-center gap-2">
                     NOVA
                     <span className="flex h-2 w-2 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-white/10 text-orange-300 border border-white/10 uppercase tracking-wider ml-1">Beta</span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 uppercase tracking-wider ml-1">Beta</span>
                   </h3>
-                  <p className="text-[11px] text-white/60">Intelligent Solar Guide</p>
+                  <p className="text-[11px] text-zinc-400">Intelligent Solar Guide</p>
                 </div>
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="p-2 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-colors"
+                className="p-2 rounded-full hover:bg-white/5 text-zinc-400 hover:text-white transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -241,11 +249,11 @@ export const Chatbot = () => {
                     <div className={twMerge(
                       "px-4 py-3 text-sm leading-relaxed shadow-lg backdrop-blur-md relative overflow-hidden",
                       msg.role === 'user'
-                        ? "bg-gradient-to-br from-orange-500 to-amber-600 text-white rounded-2xl rounded-tr-sm shadow-orange-500/20 border border-orange-400/50"
-                        : "bg-white/10 text-slate-100 rounded-2xl rounded-tl-sm border border-white/10 shadow-black/20"
+                        ? "bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-sm shadow-emerald-500/20 border border-emerald-400/30"
+                        : "bg-[#18181b] text-zinc-100 rounded-2xl rounded-tl-sm border border-white/5 shadow-black/20"
                     )}>
                       {msg.role === 'assistant' && (
-                         <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(255,255,255,0.02)_50%,transparent_100%)] bg-[length:100%_4px] opacity-50 pointer-events-none" />
+                         <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(255,255,255,0.01)_50%,transparent_100%)] bg-[length:100%_4px] opacity-50 pointer-events-none" />
                       )}
                       <span className="relative z-10 whitespace-pre-wrap">{text}</span>
                     </div>
@@ -258,7 +266,7 @@ export const Chatbot = () => {
                         <button
                           key={i}
                           onClick={() => submitMessage(opt)}
-                          className="px-4 py-1.5 text-xs font-semibold text-orange-400 bg-black/40 border border-orange-500/30 rounded-full hover:bg-orange-500/20 hover:border-orange-500 hover:text-orange-300 hover:shadow-[0_0_15px_rgba(249,115,22,0.3)] transition-all duration-300"
+                          className="px-4 py-1.5 text-xs font-medium text-emerald-400 bg-emerald-500/5 border border-emerald-500/20 rounded-full hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:text-emerald-300 transition-all duration-300"
                         >
                           {opt}
                         </button>
@@ -274,10 +282,10 @@ export const Chatbot = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex gap-3"
                 >
-                  <div className="px-4 py-3 rounded-2xl bg-white/10 rounded-tl-sm border border-white/10 flex items-center gap-1.5 shadow-lg backdrop-blur-md">
-                    <div className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="px-4 py-3 rounded-2xl bg-[#18181b] rounded-tl-sm border border-white/5 flex items-center gap-1.5 shadow-lg">
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </motion.div>
               )}
@@ -286,19 +294,19 @@ export const Chatbot = () => {
 
             {/* Floating Pill Input */}
             <div className="absolute bottom-4 left-4 right-4 z-20">
-              <form onSubmit={handleSubmit} className="relative flex gap-2 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full p-1.5 shadow-2xl">
+              <form onSubmit={handleSubmit} className="relative flex gap-2 bg-[#18181b]/80 backdrop-blur-xl border border-white/5 rounded-full p-1.5 shadow-2xl">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask NOVA..."
-                  className="flex-1 bg-transparent px-4 py-2 text-sm text-white placeholder-white/40 outline-none"
+                  className="flex-1 bg-transparent px-4 py-2 text-sm text-zinc-100 placeholder-zinc-500 outline-none"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 disabled:opacity-50 text-white p-2.5 rounded-full transition-all shadow-lg shadow-orange-500/30 flex items-center justify-center group"
+                  className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:bg-emerald-500 text-[#09090b] p-2.5 rounded-full transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center group"
                 >
                   <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
