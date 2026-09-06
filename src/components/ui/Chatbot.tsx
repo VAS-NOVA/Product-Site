@@ -189,7 +189,7 @@ export const Chatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] h-[600px] max-h-[80vh] max-w-[calc(100vw-3rem)] rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 bg-[#09090b] flex flex-col"
+            className="fixed bottom-6 right-6 z-50 w-[380px] h-[600px] max-h-[80vh] max-w-[calc(100vw-3rem)] rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 bg-slate-900 flex flex-col"
           >
             {/* Engineering Grid Background */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
@@ -202,14 +202,14 @@ export const Chatbot = () => {
               <img 
                 src="/vas-logo-transparent.png" 
                 alt="" 
-                className="w-64 h-auto opacity-[0.04] mix-blend-plus-lighter"
+                className="w-64 h-auto opacity-20 mix-blend-plus-lighter"
               />
             </div>
 
             {/* Floating Island Header */}
-            <div className="absolute top-4 left-4 right-4 z-20 bg-[#18181b]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-3 flex items-center justify-between shadow-lg">
+            <div className="absolute top-4 left-4 right-4 z-20 bg-slate-800/80 backdrop-blur-xl border border-white/5 rounded-2xl p-3 flex items-center justify-between shadow-lg">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#09090b] border border-white/5 flex items-center justify-center shadow-inner">
+                <div className="w-10 h-10 rounded-full bg-slate-900 border border-white/5 flex items-center justify-center shadow-inner">
                   <Zap className="w-5 h-5 text-emerald-400" />
                 </div>
                 <div>
@@ -250,7 +250,7 @@ export const Chatbot = () => {
                       "px-4 py-3 text-sm leading-relaxed shadow-lg backdrop-blur-md relative overflow-hidden",
                       msg.role === 'user'
                         ? "bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-sm shadow-emerald-500/20 border border-emerald-400/30"
-                        : "bg-[#18181b] text-zinc-100 rounded-2xl rounded-tl-sm border border-white/5 shadow-black/20"
+                        : "bg-slate-800 text-zinc-100 rounded-2xl rounded-tl-sm border border-white/5 shadow-black/20"
                     )}>
                       {msg.role === 'assistant' && (
                          <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(255,255,255,0.01)_50%,transparent_100%)] bg-[length:100%_4px] opacity-50 pointer-events-none" />
@@ -282,7 +282,7 @@ export const Chatbot = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex gap-3"
                 >
-                  <div className="px-4 py-3 rounded-2xl bg-[#18181b] rounded-tl-sm border border-white/5 flex items-center gap-1.5 shadow-lg">
+                  <div className="px-4 py-3 rounded-2xl bg-slate-800 rounded-tl-sm border border-white/5 flex items-center gap-1.5 shadow-lg">
                     <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                     <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                     <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
@@ -294,19 +294,19 @@ export const Chatbot = () => {
 
             {/* Floating Pill Input */}
             <div className="absolute bottom-4 left-4 right-4 z-20">
-              <form onSubmit={handleSubmit} className="relative flex gap-2 bg-[#18181b]/80 backdrop-blur-xl border border-white/5 rounded-full p-1.5 shadow-2xl">
+              <form onSubmit={handleSubmit} className="relative flex gap-2 bg-slate-800/80 backdrop-blur-xl border border-white/5 rounded-full p-1.5 shadow-2xl">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask NOVA..."
-                  className="flex-1 bg-transparent px-4 py-2 text-sm text-zinc-100 placeholder-zinc-500 outline-none"
+                  className="flex-1 bg-transparent px-4 py-2 text-sm text-zinc-100 placeholder-zinc-400 outline-none"
                   disabled={isLoading}
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:bg-emerald-500 text-[#09090b] p-2.5 rounded-full transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center group"
+                  className="bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 disabled:hover:bg-emerald-500 text-slate-900 p-2.5 rounded-full transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center group"
                 >
                   <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
