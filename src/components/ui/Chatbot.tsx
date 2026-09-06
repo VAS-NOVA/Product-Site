@@ -37,13 +37,10 @@ export const Chatbot = () => {
     }
   }, [messages, isLoading]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
+  const submitMessage = async (messageText: string) => {
+    if (!messageText.trim() || isLoading) return;
 
-    const userMessage = input.trim();
-    setInput('');
-    setMessages((prev) => [...prev, { role: 'user', content: userMessage }]);
+    setMessages((prev) => [...prev, { role: 'user', content: messageText }]);
     setIsLoading(true);
 
     try {
@@ -53,7 +50,7 @@ export const Chatbot = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: [...messages, { role: 'user', content: userMessage }].map(m => ({
+          messages: [...messages, { role: 'user', content: messageText }].map(m => ({
             role: m.role,
             content: m.content
           })),
@@ -104,6 +101,27 @@ export const Chatbot = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = input;
+    setInput('');
+    await submitMessage(text);
+  };
+
+  const parseMessage = (content: string) => {
+    const optionsRegex = /\[OPTION:\s*(.*?)\]/g;
+    let text = content;
+    const options: string[] = [];
+    
+    let match;
+    while ((match = optionsRegex.exec(content)) !== null) {
+      options.push(match[1]);
+      text = text.replace(match[0], '');
+    }
+    
+    return { text: text.trim(), options };
   };
 
   return (
@@ -169,37 +187,56 @@ export const Chatbot = () => {
 
             {/* Messages Area */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
-              {messages.map((msg, index) => (
+              {messages.map((msg, index) => {
+                const { text, options } = parseMessage(msg.content);
+                return (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
                   key={index}
-                  className={twMerge("flex gap-3", msg.role === 'user' ? "flex-row-reverse" : "flex-row")}
+                  className={twMerge("flex flex-col gap-2", msg.role === 'user' ? "items-end" : "items-start")}
                 >
-                  <div className={twMerge(
-                    "w-8 h-8 rounded-full flex items-center justify-center shrink-0 border",
-                    msg.role === 'user' 
-                      ? "bg-cyan-500/20 border-cyan-500/50 text-cyan-300" 
-                      : "bg-emerald-500/20 border-emerald-500/50 text-emerald-300"
-                  )}>
-                    {msg.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                  <div className={twMerge("flex gap-3", msg.role === 'user' ? "flex-row-reverse" : "flex-row")}>
+                    <div className={twMerge(
+                      "w-8 h-8 rounded-full flex items-center justify-center shrink-0 border",
+                      msg.role === 'user' 
+                        ? "bg-cyan-500/20 border-cyan-500/50 text-cyan-300" 
+                        : "bg-emerald-500/20 border-emerald-500/50 text-emerald-300"
+                    )}>
+                      {msg.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                    </div>
+                    
+                    <div className={twMerge(
+                      "px-4 py-3 rounded-2xl max-w-[80%] text-sm leading-relaxed backdrop-blur-md shadow-sm relative overflow-hidden",
+                      msg.role === 'user'
+                        ? "bg-slate-800/80 text-white rounded-tr-sm border border-slate-700/50"
+                        : "bg-gradient-to-br from-slate-800 to-slate-900 text-slate-100 rounded-tl-sm border border-emerald-500/20 shadow-emerald-900/10"
+                    )}>
+                      {/* Futuristic scanline effect for assistant messages */}
+                      {msg.role === 'assistant' && (
+                         <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(52,211,153,0.03)_50%,transparent_100%)] bg-[length:100%_4px] opacity-50 pointer-events-none" />
+                      )}
+                      <span className="relative z-10 whitespace-pre-wrap">{text}</span>
+                    </div>
                   </div>
                   
-                  <div className={twMerge(
-                    "px-4 py-3 rounded-2xl max-w-[80%] text-sm leading-relaxed backdrop-blur-md shadow-sm relative overflow-hidden",
-                    msg.role === 'user'
-                      ? "bg-slate-800/80 text-white rounded-tr-sm border border-slate-700/50"
-                      : "bg-gradient-to-br from-slate-800 to-slate-900 text-slate-100 rounded-tl-sm border border-emerald-500/20 shadow-emerald-900/10"
-                  )}>
-                    {/* Futuristic scanline effect for assistant messages */}
-                    {msg.role === 'assistant' && (
-                       <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(52,211,153,0.03)_50%,transparent_100%)] bg-[length:100%_4px] opacity-50 pointer-events-none" />
-                    )}
-                    <span className="relative z-10 whitespace-pre-wrap">{msg.content}</span>
-                  </div>
+                  {/* Quick Reply Options */}
+                  {options.length > 0 && index === messages.length - 1 && !isLoading && (
+                    <div className="flex flex-wrap gap-2 mt-2 ml-11">
+                      {options.map((opt, i) => (
+                        <button
+                          key={i}
+                          onClick={() => submitMessage(opt)}
+                          className="px-3 py-1.5 text-xs font-medium text-emerald-400 bg-emerald-950/40 border border-emerald-800/50 rounded-full hover:bg-emerald-900/60 hover:text-emerald-300 transition-colors"
+                        >
+                          {opt}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
-              ))}
+              )})}
 
               {isLoading && (
                 <motion.div
