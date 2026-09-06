@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot, User, Zap, Sparkles } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Zap, Sparkles, BatteryCharging, Sun } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -219,7 +219,14 @@ export const Chatbot = () => {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth chatbot-scroll relative">
+              {/* Background Energy Pattern */}
+              <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex flex-col items-center justify-around opacity-[0.03]">
+                 <Zap className="w-48 h-48 text-emerald-500 transform rotate-12" />
+                 <BatteryCharging className="w-48 h-48 text-emerald-500 transform -rotate-12" />
+                 <Sun className="w-48 h-48 text-emerald-500 transform rotate-45" />
+              </div>
+
               {messages.map((msg, index) => {
                 const { text, options } = parseMessage(msg.content);
                 return (
