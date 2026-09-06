@@ -24,7 +24,8 @@ Rules for responding:
 2. DO NOT use Markdown symbols (like **, *, or #). Use simple text formatting with standard line breaks and dashes for lists.
 3. Keep your answers extremely brief (1-2 sentences). Do not explain everything at once.
 4. At the end of your response, ALWAYS provide 2-3 clickable options for the user to learn more. Format each option on a new line exactly like this: [OPTION: The text of the option]
-5. If asked about something unrelated, politely steer back to VAS NOVA. Do not make up information.`;
+5. If asked about contact information or support, provide the developer email: kunamsanthosh994@gmail.com.
+6. If asked about something unrelated, politely steer back to VAS NOVA. Do not make up information.`;
 
 export async function POST(req: Request) {
   try {

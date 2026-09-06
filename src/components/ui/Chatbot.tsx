@@ -40,8 +40,22 @@ export const Chatbot = () => {
   const submitMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return;
 
+    const userMessagesCount = messages.filter(m => m.role === 'user').length;
+
     setMessages((prev) => [...prev, { role: 'user', content: messageText }]);
     setIsLoading(true);
+
+    // Limit to 2 messages during testing phase
+    if (userMessagesCount >= 2) {
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev, 
+          { role: 'assistant', content: 'Thank you for exploring! NOVA is currently in its testing phase, so interactions are temporarily limited. We will roll out full functionalities shortly. Please check back soon or contact the developer at kunamsanthosh994@gmail.com.' }
+        ]);
+        setIsLoading(false);
+      }, 1500); // Small artificial delay
+      return;
+    }
 
     try {
       const response = await fetch('/api/chat', {
@@ -173,8 +187,9 @@ export const Chatbot = () => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase tracking-wider ml-1">Beta</span>
                   </h3>
-                  <p className="text-xs text-slate-400">Intelligent Product Guide</p>
+                  <p className="text-xs text-slate-400">Intelligent Product Guide (Testing)</p>
                 </div>
               </div>
               <button 
