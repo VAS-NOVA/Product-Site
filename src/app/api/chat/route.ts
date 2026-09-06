@@ -20,10 +20,10 @@ About VAS NOVA:
   - Layers include: Top Insulation Plate, Copper Busbars, Cell Holder, LiFePO4 Cells (high performance 32700 cells), BMS & Control Board, and Bottom Plate.
 
 Rules for responding:
-1. Always be polite, helpful, and highly technical when appropriate.
-2. If asked about something unrelated to EVs, solar power, batteries, or VAS NOVA, politely steer the conversation back to VAS NOVA's products and mission.
-3. Keep your answers concise but informative. Format with bullet points if explaining complex technical features.
-4. Do not make up information. If you don't know the exact specifications (like exact price or weight), say that those details are currently being finalized by the engineering team and suggest they contact support or check the datasheet.`;
+1. Keep your answers EXTREMELY short and concise. Do not write long paragraphs.
+2. Always use Markdown to structure your response (bullet points, bold text).
+3. Be polite and steer unrelated topics back to VAS NOVA.
+4. Do not make up information. If unknown, refer them to support.`;
 
 export async function POST(req: Request) {
   try {
@@ -45,12 +45,24 @@ export async function POST(req: Request) {
       temperature: 0.5,
       max_tokens: 1024,
       top_p: 1,
-      stream: false,
+      stream: true,
     });
 
-    const reply = chatCompletion.choices[0]?.message?.content || 'I am sorry, I am having trouble connecting right now. Please try again later.';
+    const stream = new ReadableStream({
+      async start(controller) {
+        for await (const chunk of chatCompletion) {
+          const content = chunk.choices[0]?.delta?.content || '';
+          if (content) {
+            controller.enqueue(new TextEncoder().encode(content));
+          }
+        }
+        controller.close();
+      }
+    });
 
-    return NextResponse.json({ reply });
+    return new Response(stream, {
+      headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+    });
   } catch (error) {
     console.error('Groq API Error:', error);
     return NextResponse.json({ error: 'Failed to process chat request' }, { status: 500 });

@@ -54,11 +54,38 @@ export const Chatbot = () => {
         throw new Error('Failed to get response');
       }
 
-      const data = await response.json();
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.reply }]);
+      setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let assistantMessage = '';
+
+      if (reader) {
+        setIsLoading(false);
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          
+          const chunk = decoder.decode(value, { stream: true });
+          assistantMessage += chunk;
+          
+          setMessages((prev) => {
+            const newMessages = [...prev];
+            newMessages[newMessages.length - 1].content = assistantMessage;
+            return newMessages;
+          });
+        }
+      }
     } catch (error) {
       console.error('Chat error:', error);
-      setMessages((prev) => [...prev, { role: 'assistant', content: 'System malfunction: Unable to connect to neural network. Please try again later.' }]);
+      setMessages((prev) => {
+        const newMessages = [...prev];
+        if (newMessages[newMessages.length - 1].role === 'assistant' && newMessages[newMessages.length - 1].content === '') {
+           newMessages[newMessages.length - 1].content = 'System malfunction: Unable to connect to neural network. Please try again later.';
+           return newMessages;
+        }
+        return [...prev, { role: 'assistant', content: 'System malfunction: Unable to connect to neural network. Please try again later.' }];
+      });
     } finally {
       setIsLoading(false);
     }
