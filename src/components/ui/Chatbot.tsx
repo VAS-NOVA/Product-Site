@@ -14,18 +14,36 @@ interface Message {
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
-  // Time-of-day greeting
+  // Load from cache or set initial greeting
   useEffect(() => {
-    const hour = new Date().getHours();
-    let greeting = 'Good morning';
-    if (hour >= 12 && hour < 17) greeting = 'Good afternoon';
-    else if (hour >= 17) greeting = 'Good evening';
-    
-    setMessages([
-      { role: 'assistant', content: `${greeting}! Welcome to VAS NOVA. I am NOVA, your intelligent guide. How can I help you discover our clean-energy solutions today?` }
-    ]);
+    const cached = localStorage.getItem('vasnova_chat_cache');
+    if (cached) {
+      try {
+        setMessages(JSON.parse(cached));
+      } catch (e) {
+        console.error("Failed to parse chat cache", e);
+      }
+    } else {
+      const hour = new Date().getHours();
+      let greeting = 'Good morning';
+      if (hour >= 12 && hour < 17) greeting = 'Good afternoon';
+      else if (hour >= 17) greeting = 'Good evening';
+      
+      setMessages([
+        { role: 'assistant', content: `${greeting}! Welcome to VAS NOVA. I am NOVA, your intelligent guide. How can I help you discover our clean-energy solutions today?` }
+      ]);
+    }
+    setIsInitialized(true);
   }, []);
+
+  // Save to cache whenever messages update
+  useEffect(() => {
+    if (isInitialized && messages.length > 0) {
+      localStorage.setItem('vasnova_chat_cache', JSON.stringify(messages));
+    }
+  }, [messages, isInitialized]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
