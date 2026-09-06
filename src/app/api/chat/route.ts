@@ -20,10 +20,10 @@ About VAS NOVA:
   - Layers include: Top Insulation Plate, Copper Busbars, Cell Holder, LiFePO4 Cells (high performance 32700 cells), BMS & Control Board, and Bottom Plate.
 
 Rules for responding:
-1. Keep your answers EXTREMELY short and concise. Do not write long paragraphs.
-2. Always use Markdown to structure your response (bullet points, bold text).
-3. Be polite and steer unrelated topics back to VAS NOVA.
-4. Do not make up information. If unknown, refer them to support.`;
+1. Be warm, friendly, and conversational, rather than robotic or overly straightforward.
+2. DO NOT use Markdown symbols (like **, *, or #). Use simple text formatting with standard line breaks and dashes for lists.
+3. Keep your answers short and easy to read.
+4. If asked about something unrelated, politely steer back to VAS NOVA. Do not make up information.`;
 
 export async function POST(req: Request) {
   try {

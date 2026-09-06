@@ -13,9 +13,19 @@ interface Message {
 
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: 'Welcome to VAS NOVA. I am NOVA, your intelligent guide. How can I help you discover our clean-energy solutions today?' }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  // Time-of-day greeting
+  useEffect(() => {
+    const hour = new Date().getHours();
+    let greeting = 'Good morning';
+    if (hour >= 12 && hour < 17) greeting = 'Good afternoon';
+    else if (hour >= 17) greeting = 'Good evening';
+    
+    setMessages([
+      { role: 'assistant', content: `${greeting}! Welcome to VAS NOVA. I am NOVA, your intelligent guide. How can I help you discover our clean-energy solutions today?` }
+    ]);
+  }, []);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -67,13 +77,18 @@ export const Chatbot = () => {
           if (done) break;
           
           const chunk = decoder.decode(value, { stream: true });
-          assistantMessage += chunk;
           
-          setMessages((prev) => {
-            const newMessages = [...prev];
-            newMessages[newMessages.length - 1].content = assistantMessage;
-            return newMessages;
-          });
+          // Artificial slow typing effect
+          for (let i = 0; i < chunk.length; i++) {
+            assistantMessage += chunk[i];
+            setMessages((prev) => {
+              const newMessages = [...prev];
+              newMessages[newMessages.length - 1].content = assistantMessage;
+              return newMessages;
+            });
+            // 20ms delay per character
+            await new Promise(resolve => setTimeout(resolve, 20));
+          }
         }
       }
     } catch (error) {
